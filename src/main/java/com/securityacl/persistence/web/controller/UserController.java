@@ -5,7 +5,6 @@ import com.securityacl.persistence.repository.UserRepository;
 import com.securityacl.persistence.web.dto.UserCreatedDto;
 import com.securityacl.persistence.web.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;

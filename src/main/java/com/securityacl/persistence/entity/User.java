@@ -7,18 +7,18 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
-@Table(name = "user")
+@AllArgsConstructor
+@Table(name = "users")
 @Entity
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", nullable = false)
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false)
     private String username;
@@ -38,6 +38,8 @@ public class User implements Serializable {
 
     public static User of(UserDto userDto) {
         User user = new User();
+        //user.setId(UUID.randomUUID());//TODO provisório quando usar o postgres excluir.
+        user.setUsername(userDto.getUsername());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setFirstName(userDto.getFirstName());

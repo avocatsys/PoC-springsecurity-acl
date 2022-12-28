@@ -3,6 +3,7 @@ package com.securityacl.security;
 import com.securityacl.persistence.repository.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -30,30 +31,10 @@ public class WebSecurityConfiguration {
                     .csrf(AbstractHttpConfigurer::disable)
                     .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .exceptionHandling(c -> c.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
-
-                    /*
                     .authorizeHttpRequests(authorize -> authorize
-                            .requestMatchers("/auth/signin").permitAll()
-                            .requestMatchers(HttpMethod.GET, "/vehicles/**").permitAll()
-                            .requestMatchers(HttpMethod.DELETE, "/vehicles/**").hasRole("ADMIN")
-                            .requestMatchers(HttpMethod.GET, "/v1/vehicles/**").permitAll()
+                            .antMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
                             .anyRequest().authenticated()
-                    )*/
-
-                    .authorizeRequests(c -> c
-                            .antMatchers(
-                                    "/auth/signin",
-                                    "/v2/api-docs",
-                                    "/v3/api-docs",
-                                    "/configuration/ui",
-                                    "/swagger-resources/**",
-                                    "**/health",
-                                    "/swagger-ui/**",
-                                    "/webjars/**",
-                                    "/csrf/**").permitAll())
-                    .authorizeRequests()
-                    .anyRequest().authenticated()
-                    .and()
+                    )
                     .addFilterBefore(new JWTAuthenticationFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class)
                     .build();
         }
