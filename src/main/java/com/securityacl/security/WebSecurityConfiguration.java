@@ -1,6 +1,8 @@
 package com.securityacl.security;
 
 import com.securityacl.persistence.repository.UserRepository;
+import com.securityacl.security.jwt.JWTAuthenticationFilter;
+import com.securityacl.security.jwt.JWTTokenProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

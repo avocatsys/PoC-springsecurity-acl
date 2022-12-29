@@ -1,9 +1,9 @@
-package com.securityacl.persistence.web.controller;
+package com.securityacl.web.controller;
 
 import com.securityacl.persistence.entity.User;
 import com.securityacl.persistence.repository.UserRepository;
-import com.securityacl.persistence.web.dto.UserCreatedDto;
-import com.securityacl.persistence.web.dto.UserDto;
+import com.securityacl.web.dto.UserCreatedDto;
+import com.securityacl.web.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,6 +1,6 @@
 package com.securityacl.persistence.entity;
 
-import com.securityacl.persistence.web.dto.UserDto;
+import com.securityacl.web.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

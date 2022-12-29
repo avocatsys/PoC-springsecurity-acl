@@ -1,4 +1,4 @@
-package com.securityacl.persistence.web.dto;
+package com.securityacl.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

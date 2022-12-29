@@ -1,7 +1,7 @@
 package com.securityacl.controller;
 
-import com.securityacl.persistence.web.dto.UserCreatedDto;
-import com.securityacl.persistence.web.dto.UserDto;
+import com.securityacl.web.dto.UserCreatedDto;
+import com.securityacl.web.dto.UserDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserControllerTest {
