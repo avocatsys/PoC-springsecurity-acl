@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: V0003
+      author: michael
+      changes:
+        - createTable:
+            tableName: acl_entry #The table acl_entry stores the actual permissions assigned for each user and domain object.
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValue: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: acl_object_identity #Refers to the id field in the acl_object_identity table
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: ace_order #Refers to the ordering of the access control entries
+                  type: int(11)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: sid #Refers to the id field in the acl_sid table
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: mask #A bitwise mask to indicate the permissions. A value of 1 is equivalent to READ permission, 2 for WRITE, and so forth.
+                  type: int(11)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: granting #A flag to indicate whether the mask should be interpreted as granting access or deny access
+                  type: tinyint(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: audit_success #A flag to indicate whether to audit a successful permission
+                  type: tinyint(1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: audit_failure #A flag to indicate whether to audit a failed permission
+                  type: tinyint(1)
+                  constraints:
+                    nullable: false
