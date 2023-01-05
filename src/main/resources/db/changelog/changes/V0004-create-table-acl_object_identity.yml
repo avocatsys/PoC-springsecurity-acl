@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: V0004
+      author: michael
+      changes:
+        - createTable:
+            tableName: acl_object_identity #Refers to the id field in the acl_class. This is a reference to the fully qualified name of the class.
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValue: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: object_id_class #Refers to the primary id of the domain object. Every domain object in the application needs to have a unique id.
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: object_id_identity #Refers to the id of the parent object if existing
+                  type: uuid
+                  constraints:
+                    nullable: true
+              - column:
+                  name: parent_object #Refers to the id field in the acl_object_identity table
+                  type: uuid
+                  constraints:
+                    nullable: true
+              - column:
+                  name: owner_sid #Refers to the id field in the acl_sid. This is a reference to the username or role
+                  type: uuid
+                  constraints:
+                    nullable: true
+              - column:
+                  name: entries_inheriting #A flag to indicate whether the object has inherited entries
+                  type: tinyint(1)
+                  constraints:
+                    nullable: false
