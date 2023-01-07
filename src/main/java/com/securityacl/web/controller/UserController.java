@@ -5,6 +5,7 @@ import com.securityacl.persistence.repository.UserRepository;
 import com.securityacl.web.dto.UserCreatedDto;
 import com.securityacl.web.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.transaction.Transactional;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping(value = "/api/v1/users", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     @Autowired
@@ -29,10 +30,10 @@ public class UserController {
     public ResponseEntity<UserCreatedDto> create(@RequestBody UserDto userDto) {
 
         /**
-         * <section>
+         * <p>
          *  A criptografia da senha é possível fazer isso no controller,
          *  mas é uma prática recomendada colocar essa lógica na classe do serviço.
-         * </section>
+         * </p>
          */
         userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
 

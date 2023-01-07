@@ -6,7 +6,8 @@ databaseChangeLog:
         -  sql:
              sql:  "create table IF NOT EXISTS system_message (id integer not null, content varchar(255), primary key (id));
              
-                    CREATE SEQUENCE IF NOT EXISTS acl_seq INCREMENT 1 START 100;  
+                    CREATE SEQUENCE IF NOT EXISTS acl_seq INCREMENT 1 START 100;
+                    
                     CREATE TABLE IF NOT EXISTS acl_sid (
                     id bigint NOT NULL DEFAULT NEXTVAL('acl_seq'),
                     principal smallint NOT NULL,

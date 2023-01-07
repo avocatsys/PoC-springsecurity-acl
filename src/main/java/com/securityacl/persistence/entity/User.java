@@ -26,10 +26,10 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Column(name = "email", nullable = false, unique = true)
