@@ -2,10 +2,12 @@ package com.securityacl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
+@EntityScan(basePackages={ "com.securityacl.persistence.entity" })
 public class SecurityAclApplication {
 
 	/**
