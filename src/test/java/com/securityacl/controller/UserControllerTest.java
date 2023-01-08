@@ -12,6 +12,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
+import java.util.UUID;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserControllerTest {
@@ -27,12 +28,14 @@ public class UserControllerTest {
 
         URI uri = new URI("http://localhost:" + port + "/api/v1/users");
 
+        var random = UUID.randomUUID();
+
         var userDto = new UserDto();
-        userDto.setEmail("owtest@gmail.com");
+        userDto.setEmail("owtest+" + random + "@gmail.com");
         userDto.setPassword("12345678");
-        userDto.setUsername("owtest@gmail.com");
-        userDto.setFirstName("owteste");
-        userDto.setLastName("yellow");
+        userDto.setUsername("owtest" + random + "@gmail.com");
+        userDto.setFirstName("owteste" + random);
+        userDto.setLastName("yellow" + random);
 
         HttpEntity<Object> request = new HttpEntity<>(userDto);
 
