@@ -24,7 +24,7 @@ public class UserControllerTest {
     private int port;
 
     @Test
-    void createUser_then_201() throws Exception {
+    void givenNewUser_whenCreate_thenReturnHttpStatus201() throws Exception {
 
         URI uri = new URI("http://localhost:" + port + "/api/v1/users");
 

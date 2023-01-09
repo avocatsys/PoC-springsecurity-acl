@@ -34,4 +34,12 @@ public class SpringACLIntegrationTest {
         assertEquals(1,details.size());
         assertEquals(FIRST_MESSAGE_ID,details.get(0).getId());
     }
+
+    @Test
+    @WithMockUser(roles={"EDITOR"})
+    public void givenRoleEditor_whenFindAllMessage_thenReturn3Message(){
+        List<NoticeMessage> details = noticeMessageRepository.findAll();
+        assertNotNull(details);
+        assertEquals(3,details.size());
+    }
 }
